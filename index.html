@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Salón Estética LR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --main-color: #c4046e;
+      --bg-color: #f9f6f6;
+      --text-color: #333;
+      --card-bg: #fff;
+      --accent-light: #f0f0f0;
+      --transition-speed: 0.4s;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background-color: var(--main-color);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    header nav {
+      margin-top: .5rem;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 .8rem;
+      font-weight: 600;
+      transition: opacity var(--transition-speed);
+    }
+
+    header nav a:hover {
+      opacity: .7;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1559599078-82e64563c58b?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      height: 55vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
+      margin-top: 80px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0,0,0,.4);
+    }
+
+    .hero h2 {
+      font-size: 2.4rem;
+      max-width: 700px;
+      z-index: 1;
+    }
+
+    /* ---------- SECTIONS ---------- */
+    section {
+      padding: 80px 20px 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--main-color);
+    }
+
+    /* ----- service cards grid ----- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform var(--transition-speed);
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-25px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin: 1rem;
+    }
+
+    .card p {
+      margin: 0 1rem 1rem;
+      color: #555;
+    }
+
+    /* ----- collapsible specs ----- */
+    .toggle-icon {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.3rem;
+      transition: transform 0.4s ease;
+      user-select:none;
+    }
+
+    .toggle-icon.rotate {
+      transform: rotate(180deg);
+    }
+
+    .specs {
+      max-height: 0;
+      overflow: hidden;
+      background-color: var(--accent-light);
+      border-top: 1px solid #ddd;
+      transition: max-height 0.5s ease, padding 0.3s ease;
+      padding: 0 1rem;
+    }
+
+    .specs.active {
+      max-height: 300px;
+      padding: 1rem;
+    }
+
+    .specs h4 {
+      margin-top: 0;
+      color: var(--main-color);
+    }
+
+    .specs p {
+      margin: 6px 0;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background-color: var(--main-color);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    footer a {color: #ffe1f0; text-decoration:none;}
+
+    /* ----- responsive tweaks ----- */
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.4rem; }
+      .hero h2 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Salón de Estética LR</h1>
+  <nav>
+    <a href="#uñas">Uñas</a>
+    <a href="#depilacion">Depilación</a>
+    <a href="#pestañas">Pestañas</a>
+    <a href="#skincare">Skin Care</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h2>Descubre tu mejor versión con nuestros servicios profesionales de estética integral</h2>
+</div>
+
+<!-- ===================== SECCIÓN UÑAS ===================== -->
+<section id="uñas">
+  <h2>Uñas</h2>
+  <div class="grid">
+    <!-- card template repeated -->
+    <div class="card" onclick="toggleSpecs(this)">
+      <img src="https://www.elespectador.com/resizer/v2/6QRNFMOIVJHCBOL6ETXHRA3BEY.png?auth=fa45bc3c5f1c4e553a4c933fd78902bf351160ed1a40f3defaa45d9e8a9b1de0&width=920&height=613&smart=true&quality=70" alt="Kapping">
+      <h3>Kapping</h3>
+      <p>Precio: $9.000</p>
+      <span class="toggle-icon">▼</span>
+      <div class="specs">
+        <h4>Adicionales</h4>
+        <p>Diseños: $1000</p>
+        <p>Diseños + deco: $2000</p>
+        <p>Francesitas: $2500</p>
+        <p>Efectos: $2500</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleSpecs(this)">
+      <img src="https://agora.red/_next/image?url=https%3A%2F%2Fd3p2i4pt6coq3o.cloudfront.net%2Fservices%2F2836%2Fmain_1716216863.webp&w=3840&q=75" alt="Soft Gel">
+      <h3>Soft Gel</h3>
+      <p>Precio: $13.000</p>
+      <span class="toggle-icon">▼</span>
+      <div class="specs">
+        <h4>Adicionales</h4>
+        <p>Diseños: $1000</p>
+        <p>Diseños + deco: $2000</p>
+        <p>Francesitas: $2500</p>
+        <p>Efectos: $2500</p>
+      </div>
+    </div>
+
+    <div class="card" onclick="toggleSpecs(this)">
+      <img src="https://i.pinimg.com/736x/ce/a2/b2/cea2b2e4ab3b11aae5d80eaabd756818.jpg" alt="Esculpidas en Gel">
+      <h3>Esculpidas en Gel</h3>
+      <p>Precio: $17.000</p>
+      <span class="toggle-icon">▼</span>
+      <div class="specs">
+        <h4>Adicionales</h4>
+        <p>Diseños: $1000</p>
+        <p>Diseños + deco: $2000</p>
+        <p>Francesitas: $2500</p>
+        <p>Efectos: $2500</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECCIÓN DEPILACIÓN ===================== -->
+<section id="depilacion">
+  <h2>Depilación Definitiva</h2>
+  <div class="grid">
+    <div class="card" onclick="toggleSpecs(this)">
+      <img src="https://hellenic.cl/wp-content/uploads/2024/09/IMAGEN-SERVICIO-DEPILACION-LASER-PIERNAS-COMPLETAS-MUJER.jpg" alt="Piernas Completas">
+      <h3>Piernas Completas</h3>
+      <p>Precio por sesión: $20.000</p>
+      <span class="toggle-icon">▼</span>
+      <div class="specs">
+        <h4>Promoción</h4>
+        <p>6 sesiones: $105.000</p>
+        <p>Plan 12 cuotas sin interés</p>
+      </div>
+    </div>
+    <div class="card" onclick="toggleSpecs(this)">
+      <img src="https://germainegoyamadrid.com/wp-content/uploads/2023/09/054-blog-depilacion-laser-axilas.jpg" alt="Axilas + Cavado">
+      <h3>Axilas + Cavado</h3>
+      <p>Precio por sesión: $9.500</p>
+      <span class="toggle-icon">▼</span>
+      <div class="specs">
+        <h4>Promoción</h4>
+        <p>6 sesiones: $49.000</p>
+      </div>
+    </div>
+    <div class="card" onclick="toggleSpecs(this)">
+      <img src="https://resizer.lavozdigital.es/resizer/resizer.php?imagen=https%3A%2F%2Foferplan.lavozdigital.es%2F%2Fimages%2Fsized%2Fimages%2Fd%2Fe%2Fp%2Fdepilacionlaserfacialchiclanacadiz1web-497x280.jpg&nuevoancho=655&nuevoalto=369&crop=1" alt="Rostro Completo">
+      <h3>Rostro Completo</h3>
+      <p>Precio por sesión: $7.000</p>
+      <span class="toggle-icon">▼</span>
+      <div class="specs">
+        <h4>Promoción</h4>
+        <p>6 sesiones: $36.000</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECCIÓN PESTAÑAS ===================== -->
+<section id="pestañas">
+  <h2>Pestañas</h2>
+  <div class="grid">
+    <div class="card" onclick="toggleSpecs(this)">
+      <img src="https://ariabeautyspa.com/wp-content/uploads/2024/04/Pestanas-pelo-a-pelo-.jpeg" alt="Pestanas Pelo a Pelo-">
+      <h3>Pestaña Pelo a Pelo</h3>
+      <p>Precio: $8.000</p>
+      <span class="toggle-icon">▼</span>
+      <div class="specs">
+        <h4>Incluye</h4>
+        <p>Teñido de pestañas</p>
+        <p>Duración 6-8 semanas</p>
+      </div>
+    </div>
+    <div class="card" onclick="toggleSpecs(this)">
+      <img src="https://i.ytimg.com/vi/4XuLlAj7rZ8/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCVzKRfzS1QYF3507VVsWfnVIzZlg" alt="Extensiones Volumen 3D">
+      <h3>Extensiones Volumen 3D</h3>
+      <p>Precio: $15.000</p>
+      <span class="toggle-icon">▼</span>
+      <div class="specs">
+        <h4>Mantenimiento</h4>
+        <p>Retoque cada 3 semanas: $7.000</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECCIÓN SKINCARE ===================== -->
+<section id="skincare">
+  <h2>Skin Care & Faciales</h2>
+  <div class="grid">
+    <div class="card" onclick="toggleSpecs(this)">
+      <img src="https://haniel.pe/wp-content/uploads/2025/02/LIMPIEZA-FACIAL-PROFUNDA.jpg" alt="Limpieza Facial Profunda">
+      <h3>Limpieza Facial Profunda</h3>
+      <p>Precio: $12.000</p>
+      <span class="toggle-icon">▼</span>
+      <div class="specs">
+        <h4>Incluye</h4>
+        <p>Exfoliación ultrasónica</p>
+        <p>Máscara hidratante</p>
+        <p>Duración: 60 min</p>
+      </div>
+    </div>
+    <div class="card" onclick="toggleSpecs(this)">
+      <img src="https://images.squarespace-cdn.com/content/v1/61cc920713a4a401f48a3c0c/1644927102968-6LITYUIA4S4PKGBU5BNZ/frowndocs-dermaplaning.jpg" alt="Dermaplaning">
+      <h3>Dermaplaning</h3>
+      <p>Precio: $10.000</p>
+      <span class="toggle-icon">▼</span>
+      <div class="specs">
+        <h4>Beneficios</h4>
+        <p>Piel suave y luminosa</p>
+        <p>Mejora absorción de productos</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACTO ===================== -->
+<section id="contacto">
+  <h2>Contacto & Turnos</h2>
+  <p style="text-align:center; max-width:700px; margin:0 auto 2rem;">Estamos ubicados en Galileo Galilei 3549 Para solicitar turno o más información puedes escribirnos a <a href="mailto:estetica.lr@gmail.com">estetica.lr@gmail.com</a> o vía WhatsApp al <a href="https://wa.me/5491157296461" target="_blank">+54 9 11-5729‑6461</a>.</p>
+  <div style="display:flex; justify-content:center;">
+   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.263762716352!2d-58.76575192339149!3d-34.622774258506446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bc95c1737bec6d%3A0x4c5ae5a1e64545c9!2sGalileo%20Galilei%203549%2C%20B1742FIU%20Paso%20del%20Rey%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1747745821494!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Salón de Estética LR · Todos los derechos reservados · Desarrollado por LR Dev Studio</p>
+</footer>
+
+<script>
+  let lastOpenedSpecs = null;
+  let lastIcon = null;
+
+  function toggleSpecs(card) {
+    const specs = card.querySelector('.specs');
+    const icon = card.querySelector('.toggle-icon');
+
+    if (lastOpenedSpecs && lastOpenedSpecs !== specs) {
+      lastOpenedSpecs.classList.remove('active');
+      if (lastIcon) lastIcon.classList.remove('rotate');
+    }
+
+    if (specs.classList.contains('active')) {
+      specs.classList.remove('active');
+      icon.classList.remove('rotate');
+      lastOpenedSpecs = null;
+      lastIcon = null;
+    } else {
+      specs.classList.add('active');
+      icon.classList.add('rotate');
+      lastOpenedSpecs = specs;
+      lastIcon = icon;
+    }
+  }
+</script>
+</body>
+</html>
